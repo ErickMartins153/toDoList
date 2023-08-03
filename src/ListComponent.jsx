@@ -1,8 +1,8 @@
-export const ListComponent = () => {
+export const ListComponent = (todo) => {
   return (
     <li>
-      <input type="checkbox" name="" id="" />
-      <h2>thing to do</h2>
+      <input type="checkbox" name="" checked={todo.completed} />
+      <h2>{todo.title}</h2>
       <button className="delete">Delete</button>
     </li>
   );

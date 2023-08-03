@@ -5,11 +5,20 @@ import "./index.css";
 
 function App() {
   const [newItem, setNewItem] = useState("");
+  const [todos, setTodos] = useState([]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setTodos([
+      ...todos,
+      { id: crypto.randomUUID(), title: newItem, completed: false },
+    ]);
+  }
   return (
     <>
       <div className="container">
         <h1>To-do App</h1>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="insert-to-do"></label>
           <input
             value={newItem}
@@ -22,7 +31,9 @@ function App() {
           <button>Add</button>
         </form>
         <ul>
-          <ListComponent />
+          {todos.map((todo) => {
+            return <ListComponent title={todo.title} key={todo.id} />;
+          })}
         </ul>
       </div>
     </>
