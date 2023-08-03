@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ListComponent } from "./ListComponent";
+import { ListTodo } from "./ListTodo";
 import { TodoForm } from "./TodoForm";
 
 import "./index.css";
@@ -18,7 +18,7 @@ function App() {
         <ul>
           {todos.length === 0 && "No Todos"}
           {todos.map((todo) => {
-            return <ListComponent title={todo.title} key={todo.id} />;
+            return <ListTodo title={todo.title} key={todo.id} />;
           })}
         </ul>
       </div>

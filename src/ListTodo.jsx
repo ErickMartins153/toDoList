@@ -1,4 +1,4 @@
-export const ListComponent = (todo) => {
+export const ListTodo = (todo) => {
   return (
     <li>
       <input type="checkbox" name="" checked={todo.completed} />
