@@ -10,6 +10,12 @@ function App() {
   function addTodo(title) {
     setTodos([...todos, { id: crypto.randomUUID(), title, completed: false }]);
   }
+
+  function deleteTodo(id) {
+    return setTodos((currentTodos) => {
+      return currentTodos.filter((todo) => todo.id !== id);
+    });
+  }
   return (
     <>
       <div className="container">
@@ -18,7 +24,15 @@ function App() {
         <ul>
           {todos.length === 0 && "No Todos"}
           {todos.map((todo) => {
-            return <ListTodo title={todo.title} key={todo.id} />;
+            return (
+              <ListTodo
+                id={todo.id}
+                title={todo.title}
+                deleteTodo={deleteTodo}
+                completed={todo.completed}
+                key={todo.id}
+              />
+            );
           })}
         </ul>
       </div>

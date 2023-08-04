@@ -1,9 +1,12 @@
-export const ListTodo = (todo) => {
+// eslint-disable-next-line react/prop-types
+export const ListTodo = ({ title, completed, id, deleteTodo }) => {
   return (
     <li>
-      <input type="checkbox" name="" checked={todo.completed} />
-      <h2>{todo.title}</h2>
-      <button className="delete">Delete</button>
+      <input type="checkbox" name="" checked={completed} />
+      <h2>{title}</h2>
+      <button className="delete" onClick={() => deleteTodo(id)}>
+        Delete
+      </button>
     </li>
   );
 };
