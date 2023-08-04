@@ -29,23 +29,31 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1>To-do App</h1>
-        <TodoForm addTodo={addTodo} />
-        <ul>
-          {todos.length === 0 && "No Todos"}
-          {todos.map((todo) => {
-            return (
-              <ListTodo
-                id={todo.id}
-                title={todo.title}
-                deleteTodo={deleteTodo}
-                completed={todo.completed}
-                checkTodo={checkTodo}
-                key={todo.id}
-              />
-            );
-          })}
-        </ul>
+        <div className="todo-section todoForm">
+          <h1>To-do App</h1>
+          <TodoForm addTodo={addTodo} />
+          <ul>
+            {todos.length === 0 && "No Todos"}
+            {todos.map((todo) => {
+              return (
+                <ListTodo
+                  id={todo.id}
+                  title={todo.title}
+                  deleteTodo={deleteTodo}
+                  completed={todo.completed}
+                  checkTodo={checkTodo}
+                  key={todo.id}
+                />
+              );
+            })}
+          </ul>
+        </div>
+        <div className="completed-grid todo-section">
+          <h1>Completed</h1>
+        </div>
+        <div className="deleted-grid todo-section">
+          <h1>Deleted</h1>
+        </div>
       </div>
     </>
   );
