@@ -7,6 +7,13 @@ export const TodoForm = ({ addTodo }) => {
   function handleSubmit(e) {
     e.preventDefault();
     if (newItem === "") return;
+    let count = 0;
+    for (let i = 0; i < newItem.length; i++) {
+      if (newItem[i] === " ") {
+        count++;
+      }
+    }
+    if (count === newItem.length) return;
 
     addTodo(newItem);
   }
@@ -21,6 +28,8 @@ export const TodoForm = ({ addTodo }) => {
         id="insert-to-do"
         name="To-do"
         placeholder="Insert a to-do item"
+        maxLength="60"
+        autoComplete="off"
       />
       <button>Add</button>
     </form>
