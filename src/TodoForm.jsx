@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
-export const TodoForm = ({ onSubmit }) => {
+export const TodoForm = ({ addTodo }) => {
   const [newItem, setNewItem] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
     if (newItem === "") return;
 
-    onSubmit(newItem);
+    addTodo(newItem);
   }
 
   return (
