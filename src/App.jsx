@@ -23,6 +23,7 @@ function App() {
         if (todo.id === id) {
           return { ...todo, completed };
         }
+        return todo;
       });
     });
   }
