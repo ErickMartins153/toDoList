@@ -6,12 +6,20 @@ import "./index.css";
 
 export const App = () => {
   const [todos, setTodos] = useState([]);
+  const [deletedTodos, setDeletedTodos] = useState([]);
 
   function addTodo(title) {
-    setTodos([...todos, { id: crypto.randomUUID(), title, completed: false }]);
+    setTodos([
+      ...todos,
+      { id: crypto.randomUUID(), title, completed: false, deleted: false },
+    ]);
   }
 
   function deleteTodo(id) {
+    setDeletedTodos(
+      todos.filter((todo) => todo.id === id).concat(deletedTodos)
+    );
+    console.log(deletedTodos);
     return setTodos((currentTodos) => {
       return currentTodos.filter((todo) => todo.id !== id);
     });
@@ -73,6 +81,20 @@ export const App = () => {
         </div>
         <div className="deleted-grid todo-section">
           <h1>Deleted</h1>
+          <ul>
+            {deletedTodos.map((todo) => {
+              return (
+                <ListTodo
+                  id={todo.id}
+                  title={todo.title}
+                  deleteTodo={deleteTodo}
+                  completed={todo.completed}
+                  checkTodo={checkTodo}
+                  key={todo.id}
+                />
+              );
+            })}
+          </ul>
         </div>
       </div>
     </>
