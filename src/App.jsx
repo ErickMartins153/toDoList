@@ -4,7 +4,7 @@ import { TodoForm } from "./TodoForm";
 
 import "./index.css";
 
-function App() {
+export const App = () => {
   const [todos, setTodos] = useState([]);
 
   function addTodo(title) {
@@ -51,6 +51,25 @@ function App() {
         </div>
         <div className="completed-grid todo-section">
           <h1>Completed</h1>
+          <ul>
+            {todos.filter((todo) => todo.completed).length === 0 &&
+              "No completed Todos"}
+
+            {todos.map((todo) => {
+              if (todo.completed) {
+                return (
+                  <ListTodo
+                    id={todo.id}
+                    title={todo.title}
+                    deleteTodo={deleteTodo}
+                    completed={todo.completed}
+                    checkTodo={checkTodo}
+                    key={todo.id}
+                  />
+                );
+              }
+            })}
+          </ul>
         </div>
         <div className="deleted-grid todo-section">
           <h1>Deleted</h1>
@@ -58,6 +77,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;
