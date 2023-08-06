@@ -21,20 +21,19 @@ body {
   gap: 25px;
   display: grid;
   align-items: flex-start;
-  grid-template-columns: 1fr;
-  grid-template-areas: "completed .";
+  grid-template-columns: 1fr auto;
 }
 
 .todo-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   background: #f4f7f9;
   border-radius: 30px;
   min-width: 500px;
   max-width: 500px;
   padding: 10px;
-  min-height: 161px;
+  min-height: min-content;
   height: auto;
   word-wrap: break-word;
   white-space: pre-wrap;

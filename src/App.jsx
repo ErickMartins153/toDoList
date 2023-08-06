@@ -6,19 +6,12 @@ import "./index.css";
 
 export const App = () => {
   const [todos, setTodos] = useState([]);
-  const [deletedTodos, setDeletedTodos] = useState([]);
 
   function addTodo(title) {
-    setTodos([
-      ...todos,
-      { id: crypto.randomUUID(), title, completed: false, deleted: false },
-    ]);
+    setTodos([...todos, { id: crypto.randomUUID(), title, completed: false }]);
   }
 
   function deleteTodo(id) {
-    setDeletedTodos(
-      todos.filter((todo) => todo.id === id).concat(deletedTodos)
-    );
     return setTodos((currentTodos) => {
       return currentTodos.filter((todo) => todo.id !== id);
     });
@@ -41,7 +34,7 @@ export const App = () => {
           <h1>To-do App</h1>
           <TodoForm addTodo={addTodo} />
           <ul>
-            {todos.length === 0 && "No Todos"}
+            {todos.filter((todo) => !todo.completed).length === 0 && "No Todos"}
             {todos
               .filter((todo) => !todo.completed)
               .map((todo) => {
@@ -58,7 +51,7 @@ export const App = () => {
               })}
           </ul>
         </div>
-        <div className="completed-grid todo-section">
+        <div className="todo-section completed-grid">
           <h1>Completed</h1>
           <ul>
             {todos.filter((todo) => todo.completed).length === 0 &&
@@ -77,24 +70,6 @@ export const App = () => {
                   />
                 );
               }
-            })}
-          </ul>
-        </div>
-        <div className="deleted-grid todo-section">
-          <h1>Deleted</h1>
-          <ul>
-            {deletedTodos.length === 0 && "No deleted Todos"}
-            {deletedTodos.map((todo) => {
-              return (
-                <ListTodo
-                  id={todo.id}
-                  title={todo.title}
-                  deleteTodo={deleteTodo}
-                  completed={todo.completed}
-                  checkTodo={checkTodo}
-                  key={todo.id}
-                />
-              );
             })}
           </ul>
         </div>

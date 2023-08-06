@@ -14,7 +14,7 @@ export const TodoForm = ({ addTodo }) => {
       }
     }
     if (count === newItem.length) return;
-
+    setNewItem("");
     addTodo(newItem);
   }
 
