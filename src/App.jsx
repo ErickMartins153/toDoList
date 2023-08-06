@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ListTodo } from "./ListTodo";
 import { TodoForm } from "./TodoForm";
 
 import "./index.css";
 
 export const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const cache = localStorage.getItem("TODOS");
+    if (cache === null) return [];
+    return JSON.parse(cache);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("TODOS", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(title) {
     setTodos([...todos, { id: crypto.randomUUID(), title, completed: false }]);
@@ -51,7 +59,7 @@ export const App = () => {
               })}
           </ul>
         </div>
-        <div className="todo-section completed-grid">
+        <div className="todo-section">
           <h1>Completed</h1>
           <ul>
             {todos.filter((todo) => todo.completed).length === 0 &&
