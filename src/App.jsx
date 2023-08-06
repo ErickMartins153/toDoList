@@ -19,7 +19,6 @@ export const App = () => {
     setDeletedTodos(
       todos.filter((todo) => todo.id === id).concat(deletedTodos)
     );
-    console.log(deletedTodos);
     return setTodos((currentTodos) => {
       return currentTodos.filter((todo) => todo.id !== id);
     });
@@ -43,18 +42,20 @@ export const App = () => {
           <TodoForm addTodo={addTodo} />
           <ul>
             {todos.length === 0 && "No Todos"}
-            {todos.map((todo) => {
-              return (
-                <ListTodo
-                  id={todo.id}
-                  title={todo.title}
-                  deleteTodo={deleteTodo}
-                  completed={todo.completed}
-                  checkTodo={checkTodo}
-                  key={todo.id}
-                />
-              );
-            })}
+            {todos
+              .filter((todo) => !todo.completed)
+              .map((todo) => {
+                return (
+                  <ListTodo
+                    id={todo.id}
+                    title={todo.title}
+                    deleteTodo={deleteTodo}
+                    completed={todo.completed}
+                    checkTodo={checkTodo}
+                    key={todo.id}
+                  />
+                );
+              })}
           </ul>
         </div>
         <div className="completed-grid todo-section">
