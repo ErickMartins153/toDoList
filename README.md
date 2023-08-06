@@ -24,7 +24,7 @@ After the installation is complete, you can start the development server by runn
 npm run dev
 ```
 
-This will start the app in development mode and open it in your default web browser. You can access the app by visiting `http://localhost:3000` in your browser.
+This will start the app in development mode and open it in your default web browser. You can access the app by visiting `http://localhost:5173` in your browser.
 
 ## Features
 
