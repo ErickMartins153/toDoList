@@ -15,11 +15,12 @@ body {
   align-items: center;
 }
 .container {
-  height: 100%;
+  height: auto;
   width: 100%;
   padding: 30px;
   gap: 25px;
   display: grid;
+  align-items: flex-start;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
     "completed todo"
@@ -32,12 +33,11 @@ body {
   justify-content: center;
   background: #f4f7f9;
   border-radius: 30px;
-  width: max-content;
+  min-width: 500px;
+  max-width: 500px;
   padding: 10px;
   min-height: 161px;
-  height: min-content;
-  min-width: 346px;
-  max-width: 500px;
+  height: auto;
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;

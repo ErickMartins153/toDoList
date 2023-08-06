@@ -83,6 +83,7 @@ export const App = () => {
         <div className="deleted-grid todo-section">
           <h1>Deleted</h1>
           <ul>
+            {deletedTodos.length === 0 && "No deleted Todos"}
             {deletedTodos.map((todo) => {
               return (
                 <ListTodo
