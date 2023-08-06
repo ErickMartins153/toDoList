@@ -20,11 +20,10 @@ body {
   padding: 30px;
   gap: 25px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   grid-template-areas:
-    "completed todo ."
-    ". deleted .";
+    "completed todo"
+    "deleted deleted";
 }
 
 .todo-section {
@@ -33,7 +32,7 @@ body {
   width: max-content;
   padding: 10px;
   height: min-content;
-  max-width: 545px;
+  max-width: 500px;
   word-wrap: break-word;
   white-space: pre-wrap;
   word-break: break-word;
